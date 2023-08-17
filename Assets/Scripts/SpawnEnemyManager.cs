@@ -21,7 +21,7 @@ public class SpawnEnemyManager : MonoBehaviour
 
         if (index >= dataSpawnEnemys.Length) return;
 
-        if (index == dataSpawnEnemys.Length -1 )
+        if (index == dataSpawnEnemys.Length - 1)
         {
             int random = Random.Range(0, spawnSystems.Length);
             Vector3 pos = spawnSystems[random].transform.position;

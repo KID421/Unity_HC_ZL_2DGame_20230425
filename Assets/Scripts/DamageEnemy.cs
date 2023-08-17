@@ -16,7 +16,7 @@ public class DamageEnemy : DamageBasic
         
         damagePlayer = GameObject.Find("爆走企鵝").GetComponent<DamagePlayer>();
         
-        onDead.AddListener(() => damagePlayer.Win());
+        if (name.Contains("BOSS")) onDead.AddListener(() => damagePlayer.Win());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
