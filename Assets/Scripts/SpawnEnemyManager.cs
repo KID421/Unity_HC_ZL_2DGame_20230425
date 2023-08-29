@@ -21,17 +21,17 @@ public class SpawnEnemyManager : MonoBehaviour
 
         if (index >= dataSpawnEnemys.Length) return;
 
-        if (index == dataSpawnEnemys.Length - 1)
-        {
-            int random = Random.Range(0, spawnSystems.Length);
-            Vector3 pos = spawnSystems[random].transform.position;
-            Instantiate(dataSpawnEnemys[index].prefabEnemy, pos, Quaternion.identity);
-            index++;
-            return;
-        }
-
         if (timer >= dataSpawnEnemys[index].timeToSpawn)
         {
+            if (index == dataSpawnEnemys.Length - 1)
+            {
+                int random = Random.Range(0, spawnSystems.Length);
+                Vector3 pos = spawnSystems[random].transform.position;
+                Instantiate(dataSpawnEnemys[index].prefabEnemy, pos, Quaternion.identity);
+                index++;
+                return;
+            }
+
             for (int i = 0; i < spawnSystems.Length; i++)
             {
                 spawnSystems[i].prefabEnemy = dataSpawnEnemys[index].prefabEnemy;

@@ -20,6 +20,9 @@ public class WeaponSystem : MonoBehaviour
         rigWeapon.AddForce(power);
 
         tempWeapon.GetComponent<Weapon>().attack = this.attack;
+
+        AudioClip sound = SoundManager.instance.soundFireWeapon;
+        SoundManager.instance.PlaySound(sound, 0.8f, 1.5f);
     }
 
     private void Awake()

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7810608f6d0a2854598c7a113bbeaea4, type: 3}
   m_Name: "\u7B2C4\u6CE2\u602A\u7269\u5E7D\u9748BOSS"
   m_EditorClassIdentifier: 
-  timeToSpawn: 9
+  timeToSpawn: 150
   prefabEnemy: {fileID: 8632015303412796805, guid: 11c9a84d7c651044692c5124377688f9, type: 3}
   intervalSpawn: 1.5

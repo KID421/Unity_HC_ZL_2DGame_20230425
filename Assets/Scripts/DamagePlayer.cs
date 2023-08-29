@@ -18,12 +18,22 @@ public class DamagePlayer : DamageBasic
     public override void Damage(float damage)
     {
         base.Damage(damage);
+
+        AudioClip sound = SoundManager.instance.soundPlayerHurt;
+        SoundManager.instance.PlaySound(sound, 0.8f, 1.5f);
+
         imgHp.fillAmount = hp / hpMax;
     }
 
     protected override void Dead()
     {
         base.Dead();
+
+        if (goFinal.activeInHierarchy) return;
+
+        AudioClip sound = SoundManager.instance.soundPlayerDead;
+        SoundManager.instance.PlaySound(sound, 0.8f, 1.5f);
+
         controlSystem.enabled = false;
         weaponSystem.Stop();
         textFinal.text = "你已經死了...";
@@ -32,6 +42,8 @@ public class DamagePlayer : DamageBasic
 
     public void Win()
     {
+        if (goFinal.activeInHierarchy) return;
+
         textFinal.text = "恭喜過關";
         goFinal.SetActive(true);
     }

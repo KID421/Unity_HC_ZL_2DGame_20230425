@@ -19,8 +19,23 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource aud;
 
+    public static SoundManager instance;
+
     private void Awake()
     {
+        instance = this;
         aud = GetComponent<AudioSource>();
+    }
+
+    /// <summary>
+    /// 播放聲音
+    /// </summary>
+    /// <param name="sound">要播放的音效</param>
+    /// <param name="min">音量最小值</param>
+    /// <param name="max">音量最大值</param>
+    public void PlaySound(AudioClip sound, float min = 0.7f, float max = 1.2f)
+    {
+        float random = Random.Range(min, max);
+        aud.PlayOneShot(sound, random);
     }
 }

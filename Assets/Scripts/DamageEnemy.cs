@@ -25,12 +25,27 @@ public class DamageEnemy : DamageBasic
         {
             float damage = collision.gameObject.GetComponent<Weapon>().attack;
             Damage(damage);
+            AudioClip sound = SoundManager.instance.soundEnemyHurt;
+            SoundManager.instance.PlaySound(sound, 0.8f, 1.5f);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.Contains("武器"))
+        {
+            float damage = collision.gameObject.GetComponent<Weapon>().attack;
+            Damage(damage);
         }
     }
 
     protected override void Dead()
     {
         base.Dead();
+
+        AudioClip sound = SoundManager.instance.soundEnemyDead;
+        SoundManager.instance.PlaySound(sound, 0.8f, 1.5f);
+
         onDead.Invoke();
         Destroy(gameObject);
 
