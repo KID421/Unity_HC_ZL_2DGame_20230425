@@ -46,14 +46,16 @@ public class ControlSystem : MonoBehaviour
         // print(Input.GetKeyDown(KeyCode.A));
 
         // 如果 按下 A 或者 按下 左 就 設定為 180
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        //if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (h < 0)
         {
             // print("玩家按下 A");
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
         // 如果 按下 D 或者 按下 右 就 設定為 0
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        //if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        if (h > 0)
         {
             // print("玩家按下 D");
             transform.eulerAngles = new Vector3(0, 0, 0);
