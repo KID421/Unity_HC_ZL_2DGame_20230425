@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class EnemySystem : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class EnemySystem : MonoBehaviour
     {
         player = GameObject.Find("爆走企鵝").transform;
         damagePlayer = player.GetComponent<DamagePlayer>();
+        timer = data.attackInterval;
     }
 
     private void Update()
@@ -41,11 +43,28 @@ public class EnemySystem : MonoBehaviour
             if (timer >= data.attackInterval)
             {
                 timer = 0;
-                damagePlayer.Damage(data.attack);
+                StartCoroutine(AttackEffect());
             }
         }
 
         if (transform.position.x > player.position.x) transform.eulerAngles = new Vector3(0, 0, 0);
         else transform.eulerAngles = new Vector3(0, 180, 0);
+    }
+
+    private IEnumerator AttackEffect()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            transform.localScale += Vector3.one * 0.1f;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        damagePlayer.Damage(data.attack);
+
+        for (int i = 0; i < 10; i++)
+        {
+            transform.localScale -= Vector3.one * 0.1f;
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }

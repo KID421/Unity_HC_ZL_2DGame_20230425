@@ -15,11 +15,16 @@ MonoBehaviour:
   skillName: "\u79FB\u52D5\u901F\u5EA6"
   skillPicture: {fileID: 21300000, guid: 62ccf471231f80c41ab4606e72b3e1c6, type: 3}
   skillDescription: "\u63D0\u5347\u79FB\u52D5\u901F\u5EA6\uFF0C\u6BCF\u500B\u7B49\u7D1A\u52A0
-    2 \u9EDE\u79FB\u52D5\u901F\u5EA6\u3002"
-  skillLv: 5
+    0.5 \u9EDE\u79FB\u52D5\u901F\u5EA6\u3002"
+  skillLv: 1
   skillValues:
   - 4
+  - 4.5
+  - 5
+  - 5.5
   - 6
+  - 6.5
+  - 7
+  - 7.5
   - 8
-  - 10
-  - 12
+  - 8.5

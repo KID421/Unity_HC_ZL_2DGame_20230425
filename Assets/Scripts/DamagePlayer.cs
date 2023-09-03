@@ -14,6 +14,13 @@ public class DamagePlayer : DamageBasic
     public GameObject goFinal;
     [Header("結束標題")]
     public TextMeshProUGUI textFinal;
+    [Header("血量文字")]
+    public TextMeshProUGUI textHp;
+
+    private void Start()
+    {
+        textHp.text = $"{hp}/{hpMax}";
+    }
 
     public override void Damage(float damage)
     {
@@ -23,6 +30,15 @@ public class DamagePlayer : DamageBasic
         SoundManager.instance.PlaySound(sound, 0.8f, 1.5f);
 
         imgHp.fillAmount = hp / hpMax;
+        textHp.text = $"{hp}/{hpMax}";
+    }
+
+    public void LevelUp()
+    {
+        hp = data.hp;
+        hpMax = hp;
+        imgHp.fillAmount = hp / hpMax;
+        textHp.text = $"{hp}/{hpMax}";
     }
 
     protected override void Dead()

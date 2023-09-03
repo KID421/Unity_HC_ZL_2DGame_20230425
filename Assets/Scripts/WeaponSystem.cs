@@ -17,7 +17,7 @@ public class WeaponSystem : MonoBehaviour
         
         Rigidbody2D rigWeapon = tempWeapon.GetComponent<Rigidbody2D>();
 
-        rigWeapon.AddForce(power);
+        rigWeapon.AddForce(power * transform.right + new Vector2(0, power.y));
 
         tempWeapon.GetComponent<Weapon>().attack = this.attack;
 

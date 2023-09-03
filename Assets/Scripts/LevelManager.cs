@@ -40,6 +40,14 @@ public class LevelManager : MonoBehaviour
         {
             // print($"<color=#ff6699>i 的值：{i}</color>");
         }
+
+        for (int i = 0; i < dataSkills.Length; i++) dataSkills[i].skillLv = 1;
+
+        UpdateExpRange();
+        UpdateBeerAttack();
+        UpdateBeerInterval();
+        UpdatePlayerHp();
+        UpdateMoveSpeed();
     }
 
     private void Update()
@@ -63,7 +71,7 @@ public class LevelManager : MonoBehaviour
     {
         this.exp += exp;
 
-        if (this.exp >= expNeeds[lv - 1])
+        while (this.exp >= expNeeds[lv - 1])
         {
             this.exp -= expNeeds[lv - 1];
             lv++;
@@ -86,7 +94,7 @@ public class LevelManager : MonoBehaviour
         goLvUp.SetActive(true);
         Time.timeScale = 0;
 
-        randomSkill = dataSkills.Where(skill => skill.skillLv < 5).ToList();
+        randomSkill = dataSkills.Where(skill => skill.skillLv < 10).ToList();
         randomSkill = randomSkill.OrderBy(skill => Random.Range(0, 999)).ToList();
 
         for (int i = 0; i < 3; i++)
@@ -168,11 +176,14 @@ public class LevelManager : MonoBehaviour
 
     [Header("玩家資料")]
     public DataBasic dataBasic;
+    [Header("玩家受傷")]
+    public DamagePlayer damagePlayer;
 
     private void UpdatePlayerHp()
     {
         int lv = dataSkills[3].skillLv - 1;
         dataBasic.hp = dataSkills[3].skillValues[lv];
+        damagePlayer.LevelUp();
     }
 
     [Header("爆走企鵝：控制系統")]
